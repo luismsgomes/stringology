@@ -3,4 +3,4 @@
 __version__ = "0.0.1"
 
 
-__all__ = ["ed", "lcs", "align"]
+__all__ = ["align", "ed", "lcs", "lis"]
