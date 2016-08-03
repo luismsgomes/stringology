@@ -1,7 +1,7 @@
 from bisect import bisect
 
 
-def lis(seq, key=None, indices=False):
+def lis(seq, indices=False):
     '''longest increasing subsequence
 
     >>> lis([1, 2, 5, 3, 4])
