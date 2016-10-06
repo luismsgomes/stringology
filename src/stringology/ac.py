@@ -58,10 +58,14 @@ class AhoCorasick:
                 w = parent.fail
                 while symbol not in w.edges and w is not self.root:
                     w = w.fail
-                node.fail = w.edges[symbol] if symbol in w.edges \
-                    else self.root
-                node.out = node.fail if node.fail.pattern is not None \
-                    else node.fail.out
+                if symbol in w.edges:
+                    node.fail = w.edges[symbol]
+                else:
+                    node.fail = self.root
+                if node.fail.pattern is not None:
+                    node.out = node.fail
+                else:
+                    node.out = node.fail.out
 
 
 if __name__ == '__main__':  # pragma: no cover
