@@ -1,6 +1,6 @@
 
 
-__version__ = "0.0.4"
+__version__ = "0.0.5"
 
 
-__all__ = ["ac", "align", "ed", "lcs", "lis"]
+__all__ = ["ac", "ac2", "align", "ed", "lcs", "lis"]

@@ -76,7 +76,7 @@ def test_ac2_mutable_sequence_interface():
     assert not automaton2.ready
     assert list(automaton2('ABCD')) == []
     assert automaton2.ready
-    assert list(automaton2('ABCD')) == [] # calling for the second time
+    assert list(automaton2('ABCD')) == []  # calling for the second time
     assert 'Z' not in automaton2
 
     automaton2['A'] = 1
