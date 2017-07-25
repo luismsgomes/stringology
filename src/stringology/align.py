@@ -1,6 +1,7 @@
+import operator
 
 
-def align(s1, s2, gap=' '):
+def align(s1, s2, gap=' ', eq=operator.eq):
     '''aligns two strings
 
     >>> print(*align('pharmacy', 'farmácia', gap='_'), sep='\\n')
@@ -21,7 +22,7 @@ def align(s1, s2, gap=' '):
         p = i
         row[0] = i+1
         for j in range(n):
-            t = 0 if s1[i] == s2[j] else 1
+            t = 0 if eq(s1[i], s2[j]) else 1
             p, row[j+1] = row[j+1], min(p+t, row[j]+1, row[j+1]+1)
         table.append(list(row))  # copy row and insert into table
     # now we trace the best alignment path from cell [m][n] to cell [0],[0]
@@ -43,7 +44,7 @@ def align(s1, s2, gap=' '):
     return s1_, s2_
 
 
-def mismatches(s1, s2, context=0):
+def mismatches(s1, s2, context=0, eq=operator.eq):
     '''extract mismatched segments from aligned strings
 
     >>> list(mismatches(*align('pharmacy', 'farmácia'), context=1))
@@ -66,7 +67,7 @@ def mismatches(s1, s2, context=0):
     lct, rct = context, context if isinstance(context, int) else context
     i = None
     for j in range(n):
-        if s1[j] == s2[j]:
+        if eq(s1[j], s2[j]):
             if i is not None:
                 # report mismatch segment [i:j] with lct chars of left context
                 # and rct chars of right context
