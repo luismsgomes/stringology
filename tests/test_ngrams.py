@@ -14,6 +14,8 @@ def test_ngrams():
     ]
     assert sorted(all_ngrams("abc", maxn=2)) == ["a", "ab", "b", "bc", "c"]
     assert sorted(all_ngrams("abc", minn=2, maxn=2)) == ["ab", "bc"]
+    assert sorted(all_ngrams("abc", minn=3, maxn=3)) == ["abc"]
+    assert sorted(all_ngrams("abc", minn=1, maxn=1)) == ["a", "b", "c"]
     assert sorted(all_ngrams("abc", minn=2)) == ["ab", "abc", "bc"]
     assert sorted(all_ngrams("abc", minn=4)) == []
     assert sorted(all_ngrams("abc", maxn=0)) == []
