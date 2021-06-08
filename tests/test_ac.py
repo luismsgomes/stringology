@@ -23,3 +23,22 @@ def test_ac():
     ]
     found = list(search(text))
     assert found == expected
+
+
+def test_ac_multiple():
+    search = AhoCorasick([
+        'a',
+        'abc',
+    ])
+    text = 'abcdeaabcda'
+    expected = [
+        ('a', 0),
+        ('abc', 0),
+        ('a', 5),
+        ('a', 6),
+        ('abc', 6),
+        ('a', 10),
+    ]
+    found = list(search(text))
+    assert found == expected
+

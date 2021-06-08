@@ -26,6 +26,24 @@ def test_ac2_search():
     assert found == expected
 
 
+def test_ac2_search_multiple():
+    search = AhoCorasick2([
+        ('a', 1),
+        ('abc', 2),
+    ])
+    text = 'abcdeaabcda'
+    expected = [
+        ((0, 1), 1),
+        ((0, 3), 2),
+        ((5, 6), 1),
+        ((6, 7), 1),
+        ((6, 9), 2),
+        ((10, 11), 1),
+    ]
+    found = list(search(text))
+    assert found == expected
+
+
 def test_ac2_mutable_sequence_interface():
     items = [('AB', 1), ('ABC', 2), ('BC', 3), ('C', 4)]
     items = [(tuple(key), value) for key, value in items]
